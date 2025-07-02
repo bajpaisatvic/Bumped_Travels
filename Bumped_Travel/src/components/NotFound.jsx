@@ -9,7 +9,7 @@ export default function NotFound() {
         Page Not Found
       </h2>
       <p className="text-gray-600 mb-6">
-        Oops! This page doesn’t exist. But don’t worry — our team is already
+        Oops! This page doesn't exist. But don't worry — our team is already
         working on it! 🚧
       </p>
       <Link

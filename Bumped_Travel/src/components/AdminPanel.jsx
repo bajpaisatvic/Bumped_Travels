@@ -25,7 +25,9 @@ export default function AdminPanel() {
 
   const fetchPackages = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/v1/packages/all");
+      const res = await axios.get(
+        "https://travel-backend-wmxj.onrender.com/api/v1/packages/all"
+      );
       setPackages(res.data.data || []);
     } catch (err) {
       console.error("Failed to fetch packages", err);
@@ -34,9 +36,12 @@ export default function AdminPanel() {
 
   const fetchReviews = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/v1/review", {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        "https://travel-backend-wmxj.onrender.com/api/v1/review",
+        {
+          withCredentials: true,
+        }
+      );
       setReviews(res.data.data || []);
     } catch (err) {
       console.error("Failed to fetch reviews", err);

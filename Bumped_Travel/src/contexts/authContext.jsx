@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const checkAuth = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:4000/api/v1/users/check-auth",
+        "https://travel-backend-wmxj.onrender.com/api/v1/users/check-auth",
         {
           withCredentials: true,
         }
@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     await axios.post(
-      "http://localhost:4000/api/v1/users/logout",
+      "https://travel-backend-wmxj.onrender.com/api/v1/users/logout",
       {},
       { withCredentials: true }
     );

@@ -22,7 +22,7 @@ export default function Contact() {
 
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/v1/review",
+        "https://travel-backend-wmxj.onrender.com/api/v1/review",
         formData
       );
 
