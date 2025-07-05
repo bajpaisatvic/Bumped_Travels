@@ -10,6 +10,8 @@ export default function Header() {
   const navigate = useNavigate();
   const { isAdmin } = useAuth();
   const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const [darkMode, setDarkMode] = useState(
     () => localStorage.getItem("theme") === "dark"
   );
@@ -49,6 +51,28 @@ export default function Header() {
               alt="Logo"
             />
           </Link>
+          <button
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+            aria-controls="mobile-menu"
+            aria-expanded={isMobileMenuOpen}
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+
           <div className="flex items-center lg:order-2">
             <button
               onClick={toggleDarkMode}
@@ -77,15 +101,17 @@ export default function Header() {
             )}
           </div>
           <div
-            className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
-            id="mobile-menu-2"
+            className={`${
+              isMobileMenuOpen ? "block" : "hidden"
+            } justify-between items-center w-full lg:flex lg:w-auto lg:order-1`}
+            id="mobile-menu"
           >
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
               <li>
                 <NavLink
                   to="/"
                   className={({ isActive, isPending }) =>
-                    `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 ${
+                    `block py-2 pr-4 pl-3 duration-200  ${
                       isActive ? "text-blue-700" : "text-gray-700"
                     } lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0 dark:text-white`
                   }
@@ -97,7 +123,7 @@ export default function Header() {
                 <NavLink
                   to="/about"
                   className={({ isActive, isPending }) =>
-                    `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 ${
+                    `block py-2 pr-4 pl-3 duration-200  ${
                       isActive ? "text-blue-700" : "text-gray-700"
                     } lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0  dark:text-white`
                   }
@@ -108,7 +134,7 @@ export default function Header() {
               <li className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 text-gray-700 lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0  dark:text-white"
+                  className="block py-2 pr-4 pl-3 duration-200  text-gray-700 lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0  dark:text-white"
                 >
                   Our Services
                 </button>
@@ -149,7 +175,7 @@ export default function Header() {
                 <NavLink
                   to="/contact"
                   className={({ isActive, isPending }) =>
-                    `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 ${
+                    `block py-2 pr-4 pl-3 duration-200  ${
                       isActive ? "text-blue-700" : "text-gray-700"
                     } lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0 dark:text-white`
                   }
@@ -162,7 +188,7 @@ export default function Header() {
                   <NavLink
                     to={location.pathname.startsWith("/admin") ? "/" : "/admin"}
                     className={({ isActive }) =>
-                      `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 ${
+                      `block py-2 pr-4 pl-3 duration-200  ${
                         isActive ? "text-blue-700" : "text-gray-700"
                       } lg:hover:bg-transparent lg:border-0 hover:text-blue-700 lg:p-0 dark:text-white`
                     }

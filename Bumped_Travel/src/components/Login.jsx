@@ -21,7 +21,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/v1/users/login",
+        "https://travel-backend-1-s4yu.onrender.com/api/v1/users/login",
         {
           email,
           password,
@@ -41,7 +41,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/v1/users/register",
+        "https://travel-backend-1-s4yu.onrender.com/api/v1/users/register",
         signupData
       );
       setSignupMessage("Account created successfully! Please login.");
